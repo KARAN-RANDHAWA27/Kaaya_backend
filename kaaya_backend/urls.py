@@ -18,5 +18,5 @@ from django.urls import path
 from kaaya_login import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.HelloAPIView.as_view()),
+    path('home/', views.HelloAPIView.as_view()),
 ]
