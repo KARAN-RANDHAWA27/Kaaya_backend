@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from kaaya_login.views import KaayaaLoginUser,Profile
+from kaaya_products.views import ProductsView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', KaayaaLoginUser.as_view()),
     path('profile/', Profile.as_view()),
+    path('products/', ProductsView.as_view()),
 ]

@@ -1,0 +1,22 @@
+# .gitignore
+
+# Python
+*.pyc
+__pycache__/
+
+# Django
+*.log
+*.pot
+*.pyo
+db.sqlite3
+media/
+static/
+.idea/
+
+# Environment variables
+.env
+.env.*
+
+# Virtual environment
+venv/
+env/
