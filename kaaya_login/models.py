@@ -16,7 +16,7 @@ class TblKaayaLogin(AbstractBaseUser):
     is_deleted = models.BooleanField(blank=True, null=True)
     last_login = models.DateTimeField(blank=True, null=True, auto_now=True)
     created_date = models.DateTimeField(blank=True, null=True)
-    created_by = models.IntegerField()
+    created_by = models.IntegerField(blank=True, null=True)
     modified_date = models.DateTimeField(blank=True, null=True)
     modified_by = models.IntegerField(blank=True, null=True)
 
