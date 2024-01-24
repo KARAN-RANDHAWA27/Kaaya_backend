@@ -27,11 +27,10 @@ class TblKaayaVendorDetails(models.Model):
         message='Phone must be numeric only.',
         code='invalid_last_name'
     ), lenth_of_phone_mobile])
-
-    created_by = models.IntegerField(null=True, blank=True)
-    created_date = models.DateTimeField(blank=True, null=True)
-    modified_by = models.IntegerField(blank=True, null=True)
-    modified_date = models.DateTimeField(blank=True, null=True)
+    is_approved = models.BooleanField(null = True, blank = True, default = 0)
+    approved_by = models.IntegerField(null=True, blank=True)
+    approved_date = models.DateTimeField(blank=True, null=True)
+    is_deleted = models.BooleanField(null = True, blank = True, default = 0)
 
     class Meta:
         managed = True

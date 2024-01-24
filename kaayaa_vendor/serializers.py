@@ -4,4 +4,4 @@ from .models import TblKaayaVendorDetails
 class GetVendorDetails(serializers.ModelSerializer):
     class Meta:
         model = TblKaayaVendorDetails
-        fields = ['id', 'first_name', 'last_name', 'phone']
+        fields = ['id', 'first_name', 'last_name', 'phone','is_approved','approved_by','approved_date']
