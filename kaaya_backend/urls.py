@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from kaaya_login import views
+from kaaya_login.views import KaayaaLoginUser,Profile
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.HelloAPIView.as_view()),
+    path('login/', KaayaaLoginUser.as_view()),
+    path('profile/', Profile.as_view()),
 ]
