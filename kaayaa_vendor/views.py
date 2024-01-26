@@ -11,9 +11,6 @@ from .serializers import GetVendorDetails
 
 
 class VendorRegisterView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
-
     def post(self,request):
         success = False
         data = NULL
@@ -27,6 +24,9 @@ class VendorRegisterView(APIView):
             request.data['is_phone_verified'] = 0
             addVendorLogin = AddLoginDetails(data=request.data,partial=True)
             if addVendorLogin.is_valid() and addVendorLogin.save():
+                request.data['user'] = addVendorLogin.data['id']
+                request.data['is_approved'] = 0
+                request.data['approved_date'] = timezone.localtime(timezone.now())
                 addVendorData = GetVendorDetails(data=request.data,partial=True)
                 if addVendorData.is_valid() and addVendorData.save():
                     success = True

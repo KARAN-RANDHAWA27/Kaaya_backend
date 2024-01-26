@@ -10,7 +10,7 @@ def lenth_of_phone_mobile(value):
     
 class TblKaayaVendorDetails(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(TblKaayaLogin, models.DO_NOTHING)
+    user = models.ForeignKey(TblKaayaLogin, on_delete=models.DO_NOTHING)
     first_name = models.CharField(max_length=50, validators=[RegexValidator(
         regex='^[a-zA-Z0-9]*$',
         message='First name must be alphanumeric only.',
@@ -28,7 +28,7 @@ class TblKaayaVendorDetails(models.Model):
         code='invalid_last_name'
     ), lenth_of_phone_mobile])
     is_approved = models.BooleanField(null = True, blank = True, default = 0)
-    approved_by = models.IntegerField(null=True, blank=True)
+    approved_by = models.ForeignKey(TblKaayaLogin,null = True, blank = True,on_delete=models.DO_NOTHING,related_name='%(class)s_requests_approved')
     approved_date = models.DateTimeField(blank=True, null=True)
     is_deleted = models.BooleanField(null = True, blank = True, default = 0)
 

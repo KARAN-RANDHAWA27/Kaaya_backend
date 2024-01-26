@@ -10,8 +10,6 @@ from kaaya_login.serializers import AddLoginDetails
 
 
 class VendorRegisterView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
 
     def post(self,request):
         success = False

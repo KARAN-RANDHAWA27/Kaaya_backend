@@ -4,4 +4,4 @@ from .models import TblKaayaLogin
 class AddLoginDetails(serializers.ModelSerializer):
     class Meta:
         model = TblKaayaLogin
-        fields = ['id', 'username', 'usertype','is_email_verified','is_phone_verified']
+        fields = ['id', 'username', 'usertype','is_email_verified','is_phone_verified','created_date']

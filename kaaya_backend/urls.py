@@ -26,5 +26,5 @@ urlpatterns = [
     path('profile/', Profile.as_view()),
     path('products/', ProductsView.as_view()),
     path('register_vendor/', VendorRegisterView.as_view()),
-    path('all_vendor_data/', AllVendorView.as_view()),
+    path('all_vendor_data/>', AllVendorView.as_view()),
 ]
