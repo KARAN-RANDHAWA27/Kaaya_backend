@@ -19,6 +19,7 @@ from kaaya_login.views import KaayaaLoginUser,Profile
 from kaaya_products.views import ProductsView
 from kaayaa_vendor.views import VendorRegisterView
 from kaayaa_admin.views import AllVendorView
+from kaayaa_user.views import UserRegisterView, CartOperations
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,11 @@ urlpatterns = [
     path('profile/', Profile.as_view()),
     path('products/', ProductsView.as_view()),
     path('register_vendor/', VendorRegisterView.as_view()),
-    path('all_vendor_data/>', AllVendorView.as_view()),
+    path('all_vendor_data/', AllVendorView.as_view()),
+    
+    # User
+    path('add-user/', UserRegisterView.as_view()),
+    
+    # Cart
+    path('add-to-cart/', CartOperations.as_view()),
 ]

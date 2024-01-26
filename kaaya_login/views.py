@@ -19,7 +19,7 @@ from kaayaa_vendor.serializers import GetVendorDetails
 
 class KaayaaLoginUser(APIView):
     def post(self, request):
-        print("heu")
+        print("Login Called!!!")
         success = False
         data = None
         message = None
@@ -27,7 +27,6 @@ class KaayaaLoginUser(APIView):
         try:
             username = request.data['username'].strip()
             password = request.data['password'].strip()
-            print(make_password(password))
             login_user = TblKaayaLogin.objects.get(Q(username=username), Q(
                 is_email_verified='1', is_phone_verified='1'), Q(is_deleted='0'), Q(is_active='1'))
             userType = login_user.usertype

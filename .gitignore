@@ -12,6 +12,9 @@ db.sqlite3
 media/
 static/
 .idea/
+0001_initial.py
+__init__.py
+**/migrations/
 
 # Environment variables
 .env
