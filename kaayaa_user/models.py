@@ -51,6 +51,7 @@ class CartItem(models.Model):
         
 
 class Address(models.Model):
+    id = models.BigAutoField(primary_key=True)
     customer_name = models.CharField(max_length=255, verbose_name="Customer Name", validators=[RegexValidator(
         regex='^[a-zA-Z]+(?: [a-zA-Z]+)*$',
         message='Customer Name must be alphanumeric only.',
@@ -61,7 +62,7 @@ class Address(models.Model):
         message='Phone must be numeric only.',
         code='invalid_last_name'
     ), lenth_of_phone_mobile])
-    user = models.ForeignKey(TblKaayaUserDetails, on_delete=models.CASCADE, verbose_name="User")
+    user = models.ForeignKey('TblKaayaUserDetails', on_delete=models.CASCADE, verbose_name="User")
     address_line1 = models.CharField(max_length=255, verbose_name="Address Line 1")
     city = models.CharField(max_length=100, verbose_name="City")
     zip_code = models.CharField(max_length=20, verbose_name="ZIP Code")

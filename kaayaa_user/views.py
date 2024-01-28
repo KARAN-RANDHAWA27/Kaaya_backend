@@ -65,7 +65,6 @@ class CartOperations(APIView):
         responseCode = status.HTTP_500_INTERNAL_SERVER_ERROR
         
         try:
-            print(request.user)
             user_type = request.user.usertype
 
             if user_type != 3:
@@ -101,13 +100,16 @@ class CartOperations(APIView):
     
     
     # Update Cart Details
-    def patch(self, request, cart_id):
+    def put(self, request):
         success = False
         data = None
         message = ''
         response_code = status.HTTP_500_INTERNAL_SERVER_ERROR
 
         try:
+            if request.user.user_type != 3:
+                raise ValidationError("Invalid User!!!")
+            cart_id = request.GET.get('cart_id')
             cart_instance = CartItem.objects.get(id=cart_id)
             
             cart_serializer = CartSerializer(cart_instance, data=request.data, partial=True)

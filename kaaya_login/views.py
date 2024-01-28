@@ -19,7 +19,6 @@ from kaayaa_vendor.serializers import GetVendorDetails
 
 class KaayaaLoginUser(APIView):
     def post(self, request):
-        print("Login Called!!!")
         success = False
         data = None
         message = None
