@@ -25,7 +25,7 @@ class KaayaProduct(models.Model):
     slug = models.CharField(max_length=255, blank=True, null=True)
     HSNDetails = models.JSONField()
     is_approved = models.BooleanField(default=0)
-    approved_by = models.ForeignKey(TblKaayaLogin,null = True, blank = True,on_delete = models.DO_NOTHING)
+    approved_by = models.ForeignKey(TblKaayaLogin,null = True, blank = True,on_delete = models.DO_NOTHING,related_name='%(class)s_requests_approved')
     approved_date = models.DateTimeField(blank=True, null=True)
     # classification contains "TEMP_HIDDEN", "COMING SOON", "OUT_OF_STOCK", "NORMAL"
     classification = models.CharField(max_length=20, choices=CLASSIFICATION_CHOICES, default="NORMAL")

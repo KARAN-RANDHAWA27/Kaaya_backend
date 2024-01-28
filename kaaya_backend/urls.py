@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from kaaya_login.views import KaayaaLoginUser,Profile
-from kaaya_products.views import ProductsView
+from kaaya_products.views import ProductsView,CategoryView
 from kaayaa_vendor.views import VendorRegisterView
 from kaayaa_admin.views import AllVendorView
 from kaayaa_user.views import UserRegisterView, CartOperations
@@ -26,6 +26,7 @@ urlpatterns = [
     path('login/', KaayaaLoginUser.as_view()),
     path('profile/', Profile.as_view()),
     path('products/', ProductsView.as_view()),
+    path('category/', CategoryView.as_view()),
     path('register_vendor/', VendorRegisterView.as_view()),
     path('all_vendor_data/', AllVendorView.as_view()),
     
