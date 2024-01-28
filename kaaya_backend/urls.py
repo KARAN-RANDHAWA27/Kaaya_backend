@@ -34,4 +34,5 @@ urlpatterns = [
     
     # Cart
     path('add-to-cart/', CartOperations.as_view()),
+    path('update-cart/<int:cart_id>', CartOperations.as_view()),
 ]

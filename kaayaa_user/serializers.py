@@ -11,11 +11,4 @@ class GetUserDetails(serializers.ModelSerializer):
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = CartItem
-        fields = '__all__'
-
-    def validate_product(self, value):
-        try:
-            product = KaayaProduct.objects.get(id=value)
-        except KaayaProduct.DoesNotExist:
-            raise serializers.ValidationError("Invalid product ID. Product does not exist.")
-        return value
+        fields = ['product', 'qty', 'user', 'created_date']

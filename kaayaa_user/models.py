@@ -3,7 +3,7 @@ from kaaya_login.models import TblKaayaLogin
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from kaaya_products.models import KaayaProduct
-
+from django.utils import timezone
 
 def lenth_of_phone_mobile(value):
     if len(value) != 10:
@@ -30,7 +30,7 @@ class TblKaayaUserDetails(models.Model):
     ), lenth_of_phone_mobile])
 
     created_by = models.IntegerField(blank=True, null=True)
-    created_date = models.DateTimeField(blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now,blank=True, null=True)
     modified_by = models.IntegerField(blank=True, null=True)
     modified_date = models.DateTimeField(blank=True, null=True)
 
@@ -40,6 +40,7 @@ class TblKaayaUserDetails(models.Model):
         
         
 class CartItem(models.Model):
+    id = models.BigAutoField(primary_key=True)
     product = models.ForeignKey(KaayaProduct, on_delete=models.CASCADE)
     qty = models.IntegerField()
     created_date = models.DateTimeField(blank=True, null=True)
