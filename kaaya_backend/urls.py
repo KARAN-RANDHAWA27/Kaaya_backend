@@ -18,7 +18,7 @@ from django.urls import path
 from kaaya_login.views import KaayaaLoginUser,Profile
 from kaaya_products.views import ProductsView,CategoryView
 from kaayaa_vendor.views import VendorRegisterView
-from kaayaa_admin.views import AllVendorView
+from kaayaa_admin.views import AllVendorView, AllAdminView
 from kaayaa_user.views import UserRegisterView, CartOperations
 
 urlpatterns = [
@@ -29,6 +29,9 @@ urlpatterns = [
     path('category/', CategoryView.as_view()),
     path('register_vendor/', VendorRegisterView.as_view()),
     path('all_vendor_data/', AllVendorView.as_view()),
+    
+    # admin
+    path("add-admin/", AllAdminView.as_view()),
     
     # User
     path('add-user/', UserRegisterView.as_view()),
