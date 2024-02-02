@@ -19,7 +19,7 @@ from kaayaa_vendor.serializers import GetVendorDetails
 
 class KaayaaLoginUser(APIView):
     def post(self, request):
-        print("heu")
+        print("he")
         success = False
         data = None
         message = None
@@ -27,7 +27,6 @@ class KaayaaLoginUser(APIView):
         try:
             username = request.data['username'].strip()
             password = request.data['password'].strip()
-            print(make_password(password))
             login_user = TblKaayaLogin.objects.get(Q(username=username), Q(
                 is_email_verified='1', is_phone_verified='1'), Q(is_deleted='0'), Q(is_active='1'))
             userType = login_user.usertype
@@ -43,6 +42,8 @@ class KaayaaLoginUser(APIView):
                             'expiryTime': int(EXPIRY_TIME)}
                     message = 'logged in successfully'
                     responseCode = status.HTTP_200_OK
+                else:
+                    message = 'Username or password is wrong'
 
         except TblKaayaLogin.DoesNotExist:
             message = 'Username or password is wrong'
@@ -68,16 +69,16 @@ class Profile(APIView):
             if request.user.usertype == 1:
                 kaayaaUserDetail = TblKaayaAdminDetails.objects.get(
                     user=request.user.id)
-                loginDetails = GetAdminDetails(instance=kaayaaUserDetail)
+                loginDetails = GetAdminDetails(kaayaaUserDetail)
             elif request.user.usertype == 2:
                 kaayaaUserDetail = TblKaayaVendorDetails.objects.get(
                     user=request.user.id)
-                loginDetails = GetVendorDetails(instance=kaayaaUserDetail)
+                loginDetails = GetVendorDetails(kaayaaUserDetail)
             elif request.user.usertype == 3:
                 kaayaaUserDetail = TblKaayaUserDetails.objects.get(
                     user=request.user.id)
-                loginDetails = GetUserDetails(instance=kaayaaUserDetail)
-    
+                loginDetails = GetUserDetails(kaayaaUserDetail)
+            if loginDetails.data:
                 success = True
                 data = loginDetails.data
                 message = 'Profile retrieved successfully'
@@ -87,4 +88,25 @@ class Profile(APIView):
                 data = ""
         except Exception as e:
             print(e)
+        return Response({'success': success, 'data': data, 'message': message}, status=responseCode)
+
+
+class Logout(APIView):
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [JWTAuthentication]
+    def post(self, request):
+        success = False
+        data = NULL
+        message = NULL
+        responseCode = status.HTTP_500_INTERNAL_SERVER_ERROR
+        try:
+            refresh_token = request.data["refresh_token"]
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            success = True
+            data = NULL
+            message = "logged out successfully"
+            responseCode = status.HTTP_200_OK
+        except Exception as e:
+            message = 'logout failed'
         return Response({'success': success, 'data': data, 'message': message}, status=responseCode)

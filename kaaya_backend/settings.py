@@ -18,7 +18,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+TIME_ZONE = 'Asia/Kolkata'
+# timezone.localtime(timezone.now())
 # Application definition
 
 INSTALLED_APPS = [
@@ -32,6 +33,7 @@ INSTALLED_APPS = [
     'kaayaa_admin',
     'kaayaa_vendor',
     'kaayaa_user',
+    'kaaya_products',
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
