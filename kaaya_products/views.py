@@ -63,9 +63,12 @@ class ProductsView(APIView):
                 message = "Products data retrieved successfully"
                 response_code = status.HTTP_200_OK
             else:
-                message = "Products data retrieved failed"
+                success = True
+                message = "No product found"
+                response_code = status.HTTP_200_OK
             return Response({'success': success, 'data': data, 'message': message},status=response_code)
         except Exception as e:
+            message = 'Products data retrieved failed'
             return Response({'success': success, 'data': data, 'message': message}, status=response_code)
         
     def delete(self,request):

@@ -18,7 +18,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+TIME_ZONE = 'Asia/Kolkata'
+# timezone.localtime(timezone.now())
 # Application definition
 
 INSTALLED_APPS = [
