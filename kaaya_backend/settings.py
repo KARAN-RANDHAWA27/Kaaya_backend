@@ -86,9 +86,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'kaaya',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'USER': 'admin',
+        'PASSWORD': 'kaaya1234',
+        'HOST': 'kaaya-mysql.cxa4iaim0297.ap-south-1.rds.amazonaws.com',
         'PORT': '3306',
     }
 }
@@ -171,7 +171,7 @@ SIMPLE_JWT = {
 
 }
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['13.127.206.22']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_METHODS = ['*']
 CORS_ALLOW_HEADERS = ['*']
