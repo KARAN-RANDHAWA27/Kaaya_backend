@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'kaaya_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kaaya',
+        'NAME': 'kaaya-sql',
         'USER': 'admin',
         'PASSWORD': 'kaaya1234',
         'HOST': 'kaaya-mysql.cxa4iaim0297.ap-south-1.rds.amazonaws.com',
