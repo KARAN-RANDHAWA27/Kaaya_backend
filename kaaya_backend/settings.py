@@ -86,9 +86,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'kaaya',
-        'USER': 'user1',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'USER': 'admin',
+        'PASSWORD': 'admin123',
+        'HOST': 'kaaya.cxa4iaim0297.ap-south-1.rds.amazonaws.com',
         'PORT': '3306',
     }
 }
