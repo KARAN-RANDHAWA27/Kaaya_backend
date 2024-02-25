@@ -171,7 +171,7 @@ SIMPLE_JWT = {
 
 }
 
-ALLOWED_HOSTS = ['43.204.1.66', 'localhost']
+ALLOWED_HOSTS = ['43.204.1.66', 'localhost', '170.187.231.66']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_METHODS = ['*']
 CORS_ALLOW_HEADERS = ['*']
